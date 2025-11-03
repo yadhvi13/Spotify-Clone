@@ -1,10 +1,10 @@
 //FOR USER DATABASES
 
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 export const connectDB = async () => {
     try {
-       const conn =  await mongoose.connect(process.env.MONGO_URI);
+       const conn =  await mongoose.connect(process.env.MONGODB_URI);
        console.log(`connected to MNOGODB ${conn.connection.host}`);
        
     } catch (error) {

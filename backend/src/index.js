@@ -2,18 +2,24 @@
 
 import express from 'express';
 import dotenv from "dotenv";
+import { connectDB } from './lib/db.js';
+
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
 import albumRoutes from "./routes/album.route.js"
 import authRoutes from "./routes/auth.route.js"
 import statsRoutes from "./routes/stats.route.js"
 import songRoutes from "./routes/song.route.js"
-import { connectDB } from './lib/db.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// to get request from the body
+app.use(express.json()); //to parse req body
+
+
 
 // CREATING ROUTES
 // app.get("/", (req,res) => {
@@ -29,6 +35,6 @@ app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statsRoutes);
 
 app.listen(PORT, ()=> {
-    console.log("server is running on PORT: " + PORT);    
+    console.log("server is running on PORT: " + PORT); 
+    connectDB();   
 })
-connectDB();

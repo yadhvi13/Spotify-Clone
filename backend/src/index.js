@@ -57,3 +57,5 @@ app.listen(PORT, ()=> {
     console.log("server is running on PORT: " + PORT); 
     connectDB();   
 })
+
+// todo : socket.io -- for real time communication
